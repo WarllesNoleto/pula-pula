@@ -40,11 +40,28 @@ function startSession(id) {
     const session = sessions[id];
     const sessionElement = document.getElementById(`session-${id}`);
 
-    session.interval = setInterval(() => updateTime(id), 1000);
+    const remainingTime = 600 - session.seconds; // Calcula o tempo restante em segundos
+
+    if (remainingTime <= 0) {
+        alert("Limite de tempo atingido (10 minutos).");
+        return;
+    }
+
+    session.interval = setInterval(() => {
+        if (session.seconds >= 600) {
+            clearInterval(session.interval); // Para o intervalo após 10 minutos
+            alert("Limite de tempo atingido (10 minutos).");
+            return;
+        }
+
+        updateTime(id);
+    }, 1000);
+
     sessionElement.querySelector(`#startButton-${id}`).disabled = true;
     sessionElement.querySelector(`#stopButton-${id}`).disabled = false;
     sessionElement.querySelector(`#closeAccountButton-${id}`).disabled = false;
 }
+
 
 function stopSession(id) {
     const session = sessions[id];
