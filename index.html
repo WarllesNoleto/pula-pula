@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Brinquedos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Brinquedos</h1>
+        <div class="toy-control">
+            <label for="childName">Nome da Criança:</label>
+            <input type="text" id="childName" placeholder="Nome da Criança">
+        </div>
+        <div class="toy-control">
+            <label for="toySelect">Selecione o Brinquedo:</label>
+            <select id="toySelect">
+                <option value="carrinho">Carrinho - R$15,00 por 10 minutos</option>
+                <option value="pulaPula">Pula-Pula - R$10,00 por 10 minutos</option>
+            </select>
+        </div>
+        <div class="toy-control">
+            <button id="addButton">Adicionar</button>
+        </div>
+        <div id="sessions"></div>
+        <div id="totalContainer">
+            <h2>Fechamento de Caixa</h2>
+            <p>Total: R$<span id="total">0.00</span></p>
+            <button id="closeBoxButton">Fechar Caixa</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Selecione a Forma de Pagamento</h2>
+            <button class="payment-option" data-method="Dinheiro">Dinheiro</button>
+            <button class="payment-option" data-method="Cartão de Crédito">Cartão de Crédito</button>
+            <button class="payment-option" data-method="Cartão de Débito">Cartão de Débito</button>
+            <button class="payment-option" data-method="Pix">Pix</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
