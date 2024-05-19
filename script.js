@@ -152,10 +152,11 @@ document.getElementById('closeBoxButton').addEventListener('click', () => {
     const formattedDate = currentDate.toLocaleDateString('pt-BR');
     const currenthora = new Date();
 
-    // Obtendo a hora, minutos e segundos
     const hours = currenthora.getHours();
     const minutes = currenthora.getMinutes();
     const seconds = currenthora.getSeconds();
+    // Formatando os minutos para garantir dois dígitos
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
     let reportText = `
     <html>
@@ -172,7 +173,7 @@ document.getElementById('closeBoxButton').addEventListener('click', () => {
     </head>
     <body>
         <div class="report">
-         <h2>Relatório de Fechamento de Caixa - ${formattedDate} às ${hours}:${minutes}:${seconds}</h2>
+         <h2>Relatório de Fechamento de Caixa - ${formattedDate} às ${hours}:${formattedMinutes}:${seconds}</h2>
             
             <table>
                 <tr>
